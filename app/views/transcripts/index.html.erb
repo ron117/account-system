@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+<style>
+header {background: black;color:white;}
+</style>
+<div class="flex-container">
+<header>
+<h1>Transaction</h1>
+</header>
+</div>
+
+<table width="1565",height="550" >
+  <thead>
+    <tr>
+      <th>sn.no</th>
+      <th>Date</th>
+      <th>Transaction type</th>
+      <th>Description</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Created_at</th>
+      <th>Updated_at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transcripts.each do |transcript| %>
+      <tr>
+        <td><%= transcript.id %></td>
+        <td><%= transcript.created_at %></td>
+        <td><%= transcript.transaction_type %></td>
+        <td><%= transcript.description %></td>
+        <td><%= transcript.credit %></td>
+        <td><%= transcript.debit %></td>
+        <td><%= transcript.created_at %></td>
+        <td><%= transcript.updated_at %></td>
+        <td><%= link_to 'Show', transcript %></td>
+        <td><%= link_to 'Edit', edit_transcript_path(transcript) %></td>
+        <td><%= link_to 'Destroy', transcript, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <thead>
+    <tr>
+      <th>sn.no</th>
+      <th>Date</th>
+      <th>Transaction type</th>
+      <th>Description</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Created_at</th>
+      <th>Updated_at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+    <% @partner_transcripts.each do |partner_transcript| %>
+      <tr>
+        <td><%= partner_transcript.id %></td>
+        <td><%= partner_transcript.created_at %></td>
+      <!-- <td><%= partner_transcript.name %></td> -->
+        <td><%= partner_transcript.transaction_type %></td>
+        <td><%= partner_transcript.description %></td>
+        <td><%= partner_transcript.credit %></td>
+        <td><%= partner_transcript.debit %></td>
+        <td><%= partner_transcript.created_at %></td>
+        <td><%= partner_transcript.updated_at %></td>
+        <td><%= link_to 'Show', partner_transcript %></td>
+        <td><%= link_to 'Edit', edit_partner_transcript_path(partner_transcript) %></td>
+        <td><%= link_to 'Destroy', partner_transcript, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+<strong>credit_total:</strong><%=  Transcript.sum('credit')+PartnerTranscript.sum('credit') %> <br />
+<strong>debit_total: </strong><%= Transcript.sum('debit')+PartnerTranscript.sum('debit') %><br />
+<strong>total:</strong><%= Transcript.sum('credit')+PartnerTranscript.sum('credit')-Transcript.sum('debit')-PartnerTranscript.sum('debit') %>
+</div>
+<br>
+
+<%= link_to 'Add Transaction', new_transcript_path %>
+<%= link_to 'Home', home_dashboard_path %>

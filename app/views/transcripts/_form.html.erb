@@ -1,0 +1,43 @@
+<%= form_with(model: transcript, local: true) do |form| %>
+  <% if transcript.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transcript.errors.count, "error") %> prohibited this transcript from being saved:</h2>
+
+      <ul>
+      <% transcript.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="modal-content hi">
+  <div class="field">
+    <%= form.label :transaction_type %>
+    <!--<%= form.text_field :transaction_type, id: :transcript_transaction_type %> -->
+     <%= form.select :transaction_type, [ 'CASH','DD','ONLINE','CHECK' ] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :transcript_description %>
+  </div>
+  <div class="field" id="s_t_c">
+    <%= form.label :select_type %><br />
+   <%= form.label :select_type, "credit", :value => "Yes"  %>
+   <%= form.radio_button :select_type, true, class: "credit"%>
+   <%= form.label :select_type, "debit", :value => "No" %>
+   <%= form.radio_button :select_type, false, :checked => true, class: "debit"  %>
+ </div>
+  <div class="field auto_hide" id="c_d">
+    <%= form.label :credit %>
+    <%= form.number_field :credit, id: :transcript_credit %>
+  </div>
+  <div class="field auto_hide" id="d_d">
+    <%= form.label :debit %>
+    <%= form.number_field :debit, id: :transcript_debit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transaction type:</strong>
+  <%= @transcript.transaction_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @transcript.description %>
+</p>
+
+<p>
+  <strong>Credit:</strong>
+  <%= @transcript.credit %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @transcript.debit %>
+</p>
+
+<%= link_to 'Edit', edit_transcript_path(@transcript) %> |
+<%= link_to 'Back', transcripts_path %>

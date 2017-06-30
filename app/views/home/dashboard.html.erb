@@ -1,0 +1,63 @@
+<style>
+header {background: black;color:white;}
+</style>
+<div class="flex-container">
+<header>
+  <h1>DASHBOARD</h1>
+</header>
+</div>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+
+  <div class="w3-card w3-white" style="width:101%">
+<div class="w3-display-left">
+    <div class="w3-container w3-center">
+
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/372809-200.png" alt="Avatar" style="width:85%">
+      <%= link_to 'Transaction', transcripts_path %>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+    <div class="w3-container">
+
+      <div class="w3-card w3-white" style="width:58%">
+      <div class="w3-display-middle">
+        <div class=" w3-center">
+
+          <img src="https://cdn3.iconfinder.com/data/icons/business-office-10/512/Business_Office_Solid_team_work_affiliate_partner-512.png" alt="Avatar" style="width:60%">
+       <div class="center">
+          <%= link_to 'Partners', partners_path %>
+</div>
+            </div>
+</div>
+</div>
+</div>
+
+
+<div class="w3-container">
+
+  <div class="w3-card w3-white" style="width:75%">
+    <div class="w3-display-right">
+
+    <div class="w3-container w3-center">
+
+      <img src="https://safenet.gemalto.com/uploadedImages/images/Icons/partner-profit-icon.png" alt="Avatar" style="width:105%,height:10%">
+<div class="Center">
+      <%= link_to 'Partner Transaction', partner_transcripts_path %>
+</div>
+
+        </div>
+</div>
+</div>
+</div>
+<div class="left">
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+</div>

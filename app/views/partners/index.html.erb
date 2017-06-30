@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<style>
+header {background: black;color:white;}
+</style>
+<div  class="flex-container">
+  <header>
+<h1>Partners</h1>
+</header>
+</div>
+
+<div style="overflow-x:auto;">
+<table width=1563 height=250>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody align="center">
+    <% @partners.each do |partner| %>
+      <tr>
+        <td><%= partner.name %></td>
+        <td><%= partner.designation %></td>
+        <td><%= partner.email %></td>
+        <td><%= partner.phone %></td>
+        <td><%= partner.address %></td>
+        <td><%= link_to 'Show', partner %></td>
+        <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
+        <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Partner', new_partner_path %>
+<%= link_to 'Back', home_dashboard_path %>
