@@ -14,7 +14,7 @@
 <div class="modal-content hi">
   <div class="field">
     <%= form.label :name %>
-    <%= collection_select(:partner_transcript, :partner_id, Partner.all, :id, :name) %>
+      <%= collection_select( :partner_transcript, :partner_id, Partner.all, :id, :name, {}, { :multiple => false }) %>
   </div>
 
   <div class="field">
@@ -30,17 +30,13 @@
   <div class="field" id="s_t_c">
     <%= form.label :select_type %><br />
    <%= form.label :select_type, "invest", :value => "Yes"  %>
-   <%= form.radio_button :select_type, true, class: "credit"%>
+   <%= form.radio_button :select_type, true %>
    <%= form.label :select_type, "withdraw", :value => "No" %>
-   <%= form.radio_button :select_type, false, :checked => true, class: "debit"  %>
+   <%= form.radio_button :select_type, false, :checked => false  %>
  </div>
-  <div class="field auto_hide" id="c_d">
-    <%= form.label :credit %>
-    <%= form.number_field :credit, id: :transcript_credit %>
-  </div>
-  <div class="field auto_hide" id="d_d">
-    <%= form.label :debit %>
-    <%= form.number_field :debit, id: :transcript_debit %>
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, id: :transcript_amount %>
   </div>
 
   <div class="actions ">

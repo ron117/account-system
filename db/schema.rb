@@ -10,18 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628111406) do
+ActiveRecord::Schema.define(version: 20170701070014) do
 
   create_table "partner_transcripts", force: :cascade do |t|
     t.string "name"
     t.string "transaction_type"
     t.text "description"
-    t.integer "credit"
-    t.integer "debit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "select_type"
     t.integer "partner_id"
+    t.float "amount"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -37,11 +36,10 @@ ActiveRecord::Schema.define(version: 20170628111406) do
   create_table "transcripts", force: :cascade do |t|
     t.string "transaction_type"
     t.text "description"
-    t.integer "credit"
-    t.integer "debit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "select_type"
+    t.float "amount"
   end
 
   create_table "users", force: :cascade do |t|

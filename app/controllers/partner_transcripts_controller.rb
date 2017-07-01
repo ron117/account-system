@@ -69,6 +69,6 @@ class PartnerTranscriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partner_transcript_params
-      params.require(:partner_transcript).permit(:name, :transaction_type, :description, :credit, :debit, :partner_id)
+      params.require(:partner_transcript).permit(:name, :transaction_type, :description, :amount, :partner_id)
     end
 end

@@ -16,14 +16,10 @@
 </p>
 
 <p>
-  <strong>Credit:</strong>
-  <%= @partner_transcript.credit %>
+  <strong>Amount:</strong>
+  <%= @partner_transcript.amount %>
 </p>
 
-<p>
-  <strong>Debit:</strong>
-  <%= @partner_transcript.debit %>
-</p>
 
 <%= link_to 'Edit', edit_partner_transcript_path(@partner_transcript) %> |
 <%= link_to 'Back', partner_transcripts_path %>
