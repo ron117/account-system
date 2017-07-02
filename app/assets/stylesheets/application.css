@@ -182,3 +182,12 @@ tr:nth-child(even) {background-color: #f2f2f2}
 .center{
   text-align: center;
 }
+.leftt{
+  text-align: left;
+}
+.border{
+  border-style: solid;
+   padding:100px;
+   width:280px;
+   border-color: black;
+}

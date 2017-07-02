@@ -10,24 +10,28 @@
       </ul>
     </div>
   <% end %>
-<div class="modal-content hi">
+
+
+    <div class="border">
   <div class="field">
+
     <%= form.label :transaction_type %>
     <!--<%= form.text_field :transaction_type, id: :transcript_transaction_type %> -->
      <%= form.select :transaction_type, [ 'CASH','DD','ONLINE','CHECK' ] %>
-  </div>
+</div>
 
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :transcript_description %>
   </div>
   <div class="field">
-    <%= form.label :select_type %><br />
+    <%= form.label :select_type %><br>
    <%= form.label :select_type, "credit", :value => "Yes"  %>
    <%= form.radio_button :select_type, true %>
    <%= form.label :select_type, "debit", :value => "No" %>
-   <%= form.radio_button :select_type, false, :checked => false  %>
+   <%= form.radio_button :select_type, false, :checked => false  %><br>
  </div>
+
   <div class="field">
     <%= form.label :amount %>
     <%= form.number_field :amount, id: :transcript_amount %>
@@ -35,5 +39,8 @@
 
   <div class="actions">
     <%= form.submit %>
-  </div>
+
+
+</div>
+
 <% end %>

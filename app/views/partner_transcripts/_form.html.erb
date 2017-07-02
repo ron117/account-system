@@ -1,4 +1,4 @@
-<%= form_with(model: partner_transcript, local: true) do |form| %>
+<%= form_with(model: partner_transcript, local: true) do |f| %>
   <% if partner_transcript.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(partner_transcript.errors.count, "error") %> prohibited this partner_transcript from being saved:</h2>
@@ -11,35 +11,37 @@
     </div>
   <% end %>
 
-<div class="modal-content hi">
+<div class="border">
   <div class="field">
-    <%= form.label :name %>
+    <%= f.label :name %>
       <%= collection_select( :partner_transcript, :partner_id, Partner.all, :id, :name, {}, { :multiple => false }) %>
   </div>
 
   <div class="field">
-    <%= form.label :transaction_type %>
-       <%= form.select :transaction_type, [ 'CASH','DD','ONLINE','CHECK' ], id: :partner_transcript_transaction_type %>
+    <%= f.label :type %>
+       <%= f.select :transaction_type, [ 'CASH','DD','ONLINE','CHECK' ], id: :partner_transcript_transaction_type %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :partner_transcript_description %>
+    <%= f.label :description %>
+    <%= f.text_area :description, id: :partner_transcript_description %>
   </div>
 
   <div class="field" id="s_t_c">
-    <%= form.label :select_type %><br />
-   <%= form.label :select_type, "invest", :value => "Yes"  %>
-   <%= form.radio_button :select_type, true %>
-   <%= form.label :select_type, "withdraw", :value => "No" %>
-   <%= form.radio_button :select_type, false, :checked => false  %>
+    <%= f.label :select_type %><br />
+   <%= f.label :select_type, "credit", :value => "Yes"  %>
+   <%= f.radio_button :select_type, true %>
+   <%= f.label :select_type, "debit", :value => "No" %>
+   <%= f.radio_button :select_type, false, :checked => false  %>
  </div>
   <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount, id: :transcript_amount %>
+    <%= f.label :amount %>
+    <%= f.number_field :amount, id: :transcript_amount %>
   </div>
 
   <div class="actions ">
-    <%= form.submit %>
-  </div>
+    <%= f.submit %>
+
+
+</div>
 <% end %>

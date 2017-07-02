@@ -15,7 +15,7 @@ header {background: black;color: white;}
       <th>sn.no</th>
       <th>Date</th>
       <th>Name</th>
-      <th>Transaction type</th>
+      <th>Type</th>
       <th>Description</th>
       <th>Credit</th>
       <th>Debit</th>
@@ -26,22 +26,22 @@ header {background: black;color: white;}
   </thead>
 
   <tbody align="center">
-    <% @partner_transcripts.each do |partner_transcript| %>
+    <% @partner_transcripts.each_with_index do |partner_transcript, index| %>
       <tr>
-        <td><%= @partner_transcripts.each_with_index do |partner_transcript, index| %>
+        <td>
           <%= index+1 %>
-          <% end %></td>
+        </td>
         <!--<td><%= partner_transcript.id %></td>-->
         <td><%= partner_transcript.created_at.strftime("%m/%d/%Y") %></td>
         <td><%= partner_transcript.partner_id %></td>
         <td><%= partner_transcript.transaction_type %></td>
         <td><%= partner_transcript.description %></td>
-        <% if partner_transcript.select_type == "Yes" %>
+        <% if partner_transcript.select_type %>
                 <td><%= partner_transcript.amount %></td>
-                <td></td>
-        <% end %>
-        <% if partner_transcript.select_type == "No" %>
-                <td></td>
+                <td>--</td>
+        <% else %>
+
+                <td>--</td>
                 <td><%= partner_transcript.amount %></td>
         <% end %>
       <!--  <td><%= partner_transcript.created_at %></td>-->
@@ -52,11 +52,26 @@ header {background: black;color: white;}
       </tr>
     <% end %>
   </tbody>
+  <tfoot align="center">
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <td>credit:
+      <%= PartnerTranscript.where(:select_type => true ).sum(:amount) %>
+      </td>
+      <td>debit:
+        <%= PartnerTranscript.where(:select_type => false ).sum(:amount) %>
+      </td>
+      <td>Total:
+          <%= PartnerTranscript.where(:select_type => true ).sum(:amount)-PartnerTranscript.where(:select_type => false ).sum(:amount) %>
+      </td>
+      <th colspan="3"></th>
+    </tr>
+  </tfoot>
 </table>
-<div>
-credit:<%= PartnerTranscript.sum('amount') %>
-</div>
-<br>
-
+<br/>
 <%= link_to 'Add Partner Transcript', new_partner_transcript_path %>
 <%= link_to 'Home', home_dashboard_path %>

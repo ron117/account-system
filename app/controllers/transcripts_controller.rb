@@ -70,6 +70,6 @@ class TranscriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transcript_params
-      params.require(:transcript).permit(:transaction_type, :description, :amount)
+      params.require(:transcript).permit(:transaction_type, :description, :amount, :select_type)
     end
 end

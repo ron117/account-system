@@ -28,12 +28,12 @@ header {background: black;color:white;}
     <% @partners.each do |partner| %>
       <tr>
         <td><%= partner.created_at.strftime("%m/%d/%Y") %></td>
-        <td><%= partner.name %></td>
+        <td>partner.name</td>
         <td><%= partner.designation %></td>
         <td><%= partner.email %></td>
         <td><%= partner.phone %></td>
         <td><%= partner.address %></td>
-      <!--  <td><%= partner.updated_at %></td>-->
+        <td><%= partner.updated_at %></td>
         <td><%= link_to 'Show', partner %></td>
         <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
         <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -45,4 +45,4 @@ header {background: black;color:white;}
 <br>
 
 <%= link_to 'Add Partner', new_partner_path %>
-<%= link_to 'Back', home_dashboard_path %>
+<%= link_to 'Home', home_dashboard_path %>

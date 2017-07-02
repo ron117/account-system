@@ -25,9 +25,9 @@ class PartnerTranscriptsController < ApplicationController
   # POST /partner_transcripts.json
   def create
     @partner_transcript = PartnerTranscript.new(partner_transcript_params)
-
     respond_to do |format|
       if @partner_transcript.save
+        @transcript = Transcript.create(transaction_type: @partner_transcript.transaction_type, description: @partner_transcript.description, select_type: @partner_transcript.select_type, amount: @partner_transcript.amount)
         format.html { redirect_to @partner_transcript, notice: 'Partner transcript was successfully created.' }
         format.json { render :show, status: :created, location: @partner_transcript }
       else
@@ -35,6 +35,7 @@ class PartnerTranscriptsController < ApplicationController
         format.json { render json: @partner_transcript.errors, status: :unprocessable_entity }
       end
     end
+    #end
   end
 
   # PATCH/PUT /partner_transcripts/1
@@ -69,6 +70,6 @@ class PartnerTranscriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partner_transcript_params
-      params.require(:partner_transcript).permit(:name, :transaction_type, :description, :amount, :partner_id)
+      params.require(:partner_transcript).permit(:name, :transaction_type, :description, :amount, :partner_id, :select_type)
     end
 end
